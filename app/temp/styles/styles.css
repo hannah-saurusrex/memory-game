@@ -74,6 +74,21 @@ body {
   align-items: center;
   box-shadow: 5px 2px 5px 0 rgba(46, 61, 73, 0.5); }
 
+.deck .card.open {
+  transform: rotateY(0);
+  background: #02b3e4;
+  cursor: default;
+  animation-name: flipInY;
+  backface-visibility: visible;
+  animation-duration: .75s; }
+
+.deck .card.show {
+  font-size: 33px; }
+
+.deck .card.disabled {
+  pointer-events: none;
+  opacity: 0.9; }
+
 /* styles for overlay modal */
 .overlay {
   position: fixed;
