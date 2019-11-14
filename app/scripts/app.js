@@ -1,3 +1,5 @@
+import { DH_NOT_SUITABLE_GENERATOR, ALPN_ENABLED } from "constants";
+
 // requirement #1 -- shuffle the cards
 
 // cards holds all of our card options
@@ -67,6 +69,35 @@ function matched() {
     openedCards[0].classList.remove("open", "show");
     openedCards[1].classList.remove("open", "show");
     openedCards = [];
+}
+
+// for when cards don't match, remove and add appropriate classes
+function unmatched() {
+    openedCards[0].classList.add("unmatched"); // add the class name unmatched
+    openedCards[1].classList.add("unmatched");
+    disable(); // run the disable function when you have a match
+    setTimeout(function() { // this function turns the cards over to hide them when time has run out - meaning you have to use your memory to remember where cards live!
+        openedCards[0].classList.remove("open", "show", "unmatched");
+        openedCards[1].classList.remove("open", "show", "unmatched");
+        enable(); // when cards are unmatched, after the time runs out, all cards become enabled again, meaning the player can select two new cards to find a match
+        openedCards = [];
+    }, 1100); // this sets the time, meaning how long the unmatched cards appear before turning back over.
+}
+
+// disable all other cards temporarily
+function disable() {
+    Array.prototype.filter.call(cards, function(card) {
+        card.classList.add("disabled");
+    });
+}
+
+function enable() {
+    Array.prototype.filter.call(cards, function(card) {
+        card.classList.remove("disabled");
+        for (var i = 0; i < matchedCard.length; i++) {
+            matchedCard[i].classList.remove("disabled");
+        }
+    });
 }
 
 // requirement #3 -- game should display the current number of moves a user has made.
