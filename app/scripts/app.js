@@ -1,5 +1,3 @@
-import { DH_NOT_SUITABLE_GENERATOR, ALPN_ENABLED } from "constants";
-
 // requirement #1 -- shuffle the cards
 
 // cards holds all of our card options
@@ -43,6 +41,11 @@ function startGame() {
             deck.appendChild(item);
         });
     }
+
+    //reset timer (from requirement #5);
+    var timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
 }
 
 window.onload = startGame(); // when the window is reloaded, run the startGame() function;
@@ -105,4 +108,49 @@ function enable() {
 function moveCounter() {
     moves++;
     counter.innerHTML = moves;
+    // set timer (requirement 5) on first move
+    if (moves == 1) {
+        second == 0;
+        minute == 0;
+        hour == 0;
+        startTimer();
+    }
+
+    // requirement #4 -- star rating. The game should display a star rating between 1 & 3 to reflect the player's performance
+    // we can set the rating based on moves made, hence why we're in the moveCounter() function.
+    if (moves > 10 && moves < 14) { 
+        for (var i = 0; i < 3; i++) {
+            if (i > 1) {
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    } else if (moves > 15) {
+        for (var i = 0; i < 3; i++) {
+            if (i > 0) {
+                stars[i].style.visibility = "collapse";
+            }
+        }
+    }
 }
+
+// requirement #5 -- game timer. The timer should start when a player makes a move, and stop when the player wins the game
+var second = 0, minute = 0;
+var timer = document.querySelector(".timer");
+var interval;
+
+function startTimer() {
+    interval = setInterval(function() {
+        timer.innerHTML = minute+"mins "+second+"secs";
+        second++;
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+        }
+    }, 1000);
+}
+
+// requirement #6 -- a restart button!
