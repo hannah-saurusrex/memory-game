@@ -43,3 +43,10 @@ function startGame() {
 }
 
 window.onload = startGame(); // when the window is reloaded, run the startGame() function;
+
+// requirement #3 -- game should display the current number of moves a user has made.
+// we will create a function to move the counter and only count moves when two cards are selected
+function moveCounter() {
+    moves++;
+    counter.innerHTML = moves;
+}
