@@ -1,3 +1,5 @@
+// requirement #1 -- shuffle the cards
+
 // cards cards holds all of our card options
 let card = document.getElementsByClassName("card");
 let cards = [...card];
