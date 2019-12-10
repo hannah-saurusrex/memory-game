@@ -41,6 +41,44 @@ function shuffle(array) {
     return array;
 };
 
+// shuffles cards when page is refreshed/loads
+document.body.onload = startGame();
+
+// function to start a new play, and clear all appropriate settings
+function startGame(){
+
+    // empty the openedcards array
+    openedCards = [];
+
+    // shuffle all the cards in the deck so their position on the board changes
+    cards = shuffle(cards);
+
+    // remove all existing classes from each card
+    for (var i = 0; i < cards.length; i++){
+        deck.innerHTML = "";
+        [].forEach.call(cards, function(item) {
+            deck.appendChild(item);
+        });
+        cards[i].classList.remove("show", "open", "match", "disabled");
+    }
+
+    // reset game moves
+    moves = 0;
+    counter.innerHTML = moves;
+    // reset star rating to 3
+    for (var i = 0; i < stars.length; i++){
+        stars[i].style.color = "#FFD700";
+        stars[i].style.visibility = "visible";
+    }
+    // reset timer to 0
+    second = 0;
+    minute = 0;
+    hour = 0;
+    var timer = document.querySelector(".timer");
+    timer.innerHTML = "0 mins 0 secs";
+    clearInterval(interval);
+}
+
 
 // toggles open and show class to display cards
 var displayCard = function() {
@@ -72,6 +110,7 @@ function matched(){
     openedCards = [];
 }
 
+// what to do when cards don't match
 function unmatched(){
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
@@ -150,7 +189,7 @@ function startTimer(){
 
 // congratulations when all cards match, show modal and moves, time and star rating
 function congratulations(){
-    if (matchedCards.length == 16){
+    if (matchedCard.length == 16){
         clearInterval(interval);
         finalTime = timer.innerHTML;
 
@@ -174,7 +213,14 @@ function congratulations(){
 function closeModal(){
     closeIcon.addEventListener("click", function(e){
         modal.classList.remove("show");
+        startGame();
     });
+}
+
+// for user to play again
+function playAgain(){
+    modal.classList.remove("show");
+    startGame();
 }
 
 //loop to add event listener to each card
@@ -183,4 +229,4 @@ for (var i = 0; i < cards.length; i++){
     card.addEventListener("click", displayCard);
     card.addEventListener("click", cardOpen);
     card.addEventListener("click", congratulations);
-}
+};
