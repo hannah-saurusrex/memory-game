@@ -61,7 +61,7 @@ body {
 /* deck styles */
 .deck {
     width: 85%;
-    background: #235E6F;
+    background: rgb(31, 140, 170);
     padding: 1rem;
     border-radius: 4px;
     box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
@@ -84,12 +84,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 5px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 5px 0 rgba(46, 61, 73, 0.4);
 }
 
 .deck .card.open {
     transform: rotateY(0);
-    background: rgb(27, 206, 95);
+    background: rgb(25, 184, 86);
     cursor: default;
     animation-name: flipInY;
     backface-visibility: visible;
@@ -167,7 +167,7 @@ body {
 }
 
 .popup .close:hover {
-    color: #235E6F;
+    color: rgb(31, 140, 170);
 }
 
 .popup .content-1, 
