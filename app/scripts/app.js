@@ -1,12 +1,7 @@
-// requirement #1 -- shuffle the cards
-
-// cards holds all of our card options
-let card = document.getElementsByClassName("card");
+let card = document.getElementsByClassName("card");// requirement #1 -- shuffle the cards; cards holds all of our card options
 let cards = [...card];
-// loop through the cards and add an evey listener that will display the card on click
-for (var i = 0; i < cards.length; i++) {
-    cards[i].addEventListener('click', displayCard);
-};
+
+const deck = document.getElementById(".card-deck");
 
 var displayCard = function () { // above we are running the display card function on click.
     // here we created the displayCard function to toggle a class list on when the click event is activated.
@@ -17,23 +12,24 @@ var displayCard = function () { // above we are running the display card functio
 };
 
 // use the fisher-yates shuffle so that all cards are shuffled on page load, or restart
-function shuffle(cards) {
-    var currentIndex = cards.length, temporaryValue, randomIndex;
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex =- 1;
-
-        temporaryValue = cards[currentIndex];
-        cards[currentIndex] = cards[randomIndex];
-        cards[randomIndex] = cards[temporaryValue];
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = array[temporaryValue];
     }
-    return cards;
+
+    return array;
 }
 // this will shuffle the cards, but will not change the position of the cards on the game board
 
+document.body.onload = startGame(); // when the window is reloaded, run the startGame() function;
+
 // we need to loop through the shuffled array and display each card deck
-const deck = document.querySelector(".deck");
 function startGame() {
     var shuffledCards = shuffle(cards);
     for (var i = 0; i < shuffledCards.length; i++) {
@@ -48,7 +44,7 @@ function startGame() {
     clearInterval(interval);
 }
 
-window.onload = startGame(); // when the window is reloaded, run the startGame() function;
+
 
 //requirement #2 -- handling matched & unmatched cards. we've made each card unique with the 'type' property in our html
 // first, let's create a new array called openedCards that will hold the two selected cards and check if they are matched
@@ -154,3 +150,49 @@ function startTimer() {
 }
 
 // requirement #6 -- a restart button!
+
+// requirement #7 -- a congratulations modal. modal should show how much time it took and star rating
+// first, grab the modal box from the html
+let modal = document.getElementById("popup1");
+// grab the stars
+let starsList = document.querySelectorAll(".stars li");
+// grab the close icon
+let closeIcon = document.querySelector(".close");
+// when all cards have been matched, show the modal, the star rating, and time elapsed and close button
+function congratulations() {
+    if (matchedCard.length == 16) {
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+        // show congrats modal
+        modal.classList.add("show");
+        // declare the star rating variable
+        var starRating = document.querySelector(".stars").innerHTML;
+        // show moves made, time and star rating
+        document.getElementById("finalMove").innerHTML = moves;
+        document.getElementById("totalTime").innerHTML = finalTime;
+        document.getElementById("starRating").innerHTML = finalTime;
+        // close icon on modal
+        closeModal();
+        }
+    }
+
+// this is the function to close the modal on click event
+function closeModal() {
+    closeIcon.addEventListener('click', function(e) {
+        modal.classList.remove("show");
+        startGame();
+    });
+}
+
+function playAgain() {
+    modal.classList.remove("show");
+    startGame();
+}
+
+// loop through the cards and add an event listener that will display the card on click
+for (var i = 0; i < cards.length; i++) {
+    card = cards[i];
+    card.addEventListener('click', displayCard);
+    card.addEventListener('click', cardOpen);
+    card.addEventListener('click', congratulations);
+};
