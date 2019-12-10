@@ -156,7 +156,7 @@ body {
   visibility: visible !important;
   opacity: 100 !important; }
 
-#starRating {
+#starRating li {
   display: inline-block; }
 
 #play-again {

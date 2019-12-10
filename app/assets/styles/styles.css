@@ -182,7 +182,7 @@ body {
     opacity: 100 !important;
 }
 
-#starRating {
+#starRating li {
     display: inline-block;
 }
 
