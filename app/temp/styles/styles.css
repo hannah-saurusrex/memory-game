@@ -50,7 +50,7 @@ body {
 /* deck styles */
 .deck {
   width: 85%;
-  background: firebrick;
+  background: #235E6F;
   padding: 1rem;
   border-radius: 4px;
   box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
@@ -76,7 +76,7 @@ body {
 
 .deck .card.open {
   transform: rotateY(0);
-  background: #02b3e4;
+  background: #1bce5f;
   cursor: default;
   animation-name: flipInY;
   backface-visibility: visible;
@@ -87,14 +87,14 @@ body {
 
 .deck .card.match {
   cursor: default;
-  background: #f734e7;
+  background: #0F8A5F;
   font-size: 33px;
   animation-name: rubberBand;
   backface-visibility: visible !important;
   animation-duration: 0.75s; }
 
 .deck .card.unmatched {
-  background: #c7fa20;
+  background: #CC231E;
   animation-name: pulse;
   backface-visibility: visible !important;
   animation-duration: 0.75s; }
@@ -144,7 +144,7 @@ body {
   transition: all 200ms; }
 
 .popup .close:hover {
-  color: firebrick; }
+  color: #235E6F; }
 
 .popup .content-1,
 .content-2 {
