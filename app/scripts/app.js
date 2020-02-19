@@ -2,10 +2,10 @@
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
-//deck of all cards in the game
+// deck of all cards in the game
 const deck = document.getElementById("card-deck");
 
-//declaring move variables
+// declaring move variables
 let moves = 0;
 let counter = document.querySelector(".moves");
 
@@ -18,13 +18,13 @@ let matchedCard = document.getElementsByClassName("match");
 // stars list
 let starsList = document.querySelectorAll(".stars li");
 
-// close icon in congtarulations modal
+// close icon in congratulations modal
 let closeIcon = document.querySelector(".close");
 
-//declare modal
+// declare modal
 let modal = document.getElementById("popup1");
 
-//array for opened cards
+// array for opened cards
 var openedCards = [];
 
 // shuffle all cards on the board
@@ -87,7 +87,7 @@ var displayCard = function() {
     this.classList.toggle("disabled");
 }
 
-//add opened cards to OpenedCards list and check if cards are a match or not
+// add opened cards to OpenedCards list and check if cards are a match or not
 function cardOpen(){
     openedCards.push(this);
     var len = openedCards.length;
@@ -144,7 +144,7 @@ function enable(){
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
-    //start timer on first tile click
+    // start timer on first tile click
     if(moves == 1){
         second = 0;
         minute = 0;
@@ -223,7 +223,7 @@ function playAgain(){
     startGame();
 }
 
-//loop to add event listener to each card
+// loop to add event listener to each card
 for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
