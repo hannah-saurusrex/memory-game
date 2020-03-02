@@ -1,200 +1,201 @@
 html {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-*::before, 
+*::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+	font-family: "Montserrat", sans-serif;
+	font-size: 16px;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 /* score panel styles */
 .score-panel {
-    text-align: left;
-    margin-bottom: 10px;
+	text-align: left;
+	margin-bottom: 10px;
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
-    display: inline-block;
-    list-style: none;
+	display: inline-block;
+	list-style: none;
 }
 
 .score-panel .restart {
-    float: right;
-    cursor: pointer;
+	float: right;
+	cursor: pointer;
 }
 
 .fa-star {
-    color: gold;
+	color: gold;
 }
 
 .timer {
-    display: inline-block;
-    margin: 0 1rem;
+	display: inline-block;
+	margin: 0 1rem;
 }
 
 /* deck styles */
 .deck {
-    width: 85%;
-    background: rgb(31, 140, 170);
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 0 3em;
+	width: 85%;
+	background: rgb(31, 140, 170);
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 3.7rem;
-    width: 3.7rem;
-    margin: 0.2rem 0.2rem;
-    background: grey;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 5px 0 rgba(46, 61, 73, 0.4);
+	height: 3.7rem;
+	width: 3.7rem;
+	margin: 0.2rem 0.2rem;
+	background: #808080;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 5px 0 rgba(46, 61, 73, 0.4);
 }
 
 .deck .card.open {
-    transform: rotateY(0);
-    background: rgb(25, 184, 86);
-    cursor: default;
-    animation-name: flipInY;
-    backface-visibility: visible;
-    animation-duration: .75s;
+	transform: rotateY(0);
+	background: rgb(25, 184, 86);
+	cursor: default;
+	animation-name: flipInY;
+	backface-visibility: visible;
+	animation-duration: 0.75s;
 }
 
 .deck .card.show {
-    font-size: 33px;
+	font-size: 33px;
 }
 
 .deck .card.match {
-    cursor: default;
-    background: #0F8A5F;
-    font-size: 33px;
-    animation-name: rubberBand;
-    backface-visibility: visible !important;
-    animation-duration: 0.75s;
+	cursor: default;
+	background: #0f8a5f;
+	font-size: 33px;
+	animation-name: rubberBand;
+	backface-visibility: visible !important;
+	animation-duration: 0.75s;
 }
 
 .deck .card.unmatched {
-    background: #CC231E;
-    animation-name: pulse;
-    backface-visibility: visible !important;
-    animation-duration: 0.75s;
+	background: #cc231e;
+	animation-name: pulse;
+	backface-visibility: visible !important;
+	animation-duration: 0.75s;
 }
 
 .deck .card.disabled {
-    pointer-events: none;
-    opacity: 0.9;
+	pointer-events: none;
+	opacity: 0.9;
 }
 
 /* styles for congratulations overlay modal */
 .overlay {
-    position: fixed; 
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
 }
 
 .overlay:target {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 .popup {
-    margin: 70px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 5px;
-    width: 85%;
-    position: relative;
-    transition: 5s all ease-in-out;
+	margin: 70px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
+	transition: 5s all ease-in-out;
 }
 
 .popup h2 {
-    margin-top: 0;
-    color: #333;
-    text-align: center;
+	margin-top: 0;
+	color: #333;
+	text-align: center;
 }
 
 .popup .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-    transition: all 200ms;
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+	transition: all 200ms;
 }
 
 .popup .close:hover {
-    color: rgb(31, 140, 170);
+	color: rgb(31, 140, 170);
 }
 
-.popup .content-1, 
+.popup .content-1,
 .content-2 {
-    max-height: 30%;
-    overflow: auto;
-    text-align: center;
+	max-height: 30%;
+	overflow: auto;
+	text-align: center;
 }
 
 .show {
-    visibility: visible !important;
-    opacity: 100 !important;
+	visibility: visible !important;
+	opacity: 100 !important;
 }
 
 #starRating li {
-    display: inline-block;
+	display: inline-block;
 }
 
 #play-again {
-    background-color: #141214;
-    padding: 0.7rem 1rem;
-    font-size: 1.1rem;
-    color: #ffffff;
-    display: block;
-    margin: 0 auto;
-    width: 25%;
-    border-radius: 5px;
+	background-color: #141214;
+	padding: 0.7rem 1rem;
+	font-size: 1.1rem;
+	color: #ffffff;
+	display: block;
+	margin: 0 auto;
+	width: 25%;
+	border-radius: 5px;
 }
 
 /* game animations */
@@ -242,11 +243,11 @@ body {
 	}
 
 	65% {
-		transform: scale3d(.95, 1.05, 1);
+		transform: scale3d(0.95, 1.05, 1);
 	}
 
 	75% {
-		transform: scale3d(1.05, .95, 1);
+		transform: scale3d(1.05, 0.95, 1);
 	}
 
 	to {

@@ -5,14 +5,15 @@ html {
 *::after {
   box-sizing: inherit; }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px; }
 
 .container {
@@ -64,7 +65,7 @@ body {
   height: 3.7rem;
   width: 3.7rem;
   margin: 0.2rem 0.2rem;
-  background: grey;
+  background: #808080;
   font-size: 0;
   color: #ffffff;
   border-radius: 5px;
@@ -80,21 +81,21 @@ body {
   cursor: default;
   animation-name: flipInY;
   backface-visibility: visible;
-  animation-duration: .75s; }
+  animation-duration: 0.75s; }
 
 .deck .card.show {
   font-size: 33px; }
 
 .deck .card.match {
   cursor: default;
-  background: #0F8A5F;
+  background: #0f8a5f;
   font-size: 33px;
   animation-name: rubberBand;
   backface-visibility: visible !important;
   animation-duration: 0.75s; }
 
 .deck .card.unmatched {
-  background: #CC231E;
+  background: #cc231e;
   animation-name: pulse;
   backface-visibility: visible !important;
   animation-duration: 0.75s; }
